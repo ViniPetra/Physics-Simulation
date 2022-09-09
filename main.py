@@ -14,9 +14,7 @@ px = []
 py = []
 ag = []
 
-print("Tempo,    Px,    Py,     Vx,     Vy,     Vel,    Anglulo")
-
-for i in np.linspace(0.0, 2.5, dtype=float, num=10):
+for i in np.linspace(0.0, 1, dtype=float, num=10):
     vx1 = pl.Vx(ang=ang,v=v)
     vx.append(vx1)
     vy1 = pl.Vy(ang=ang,v=v,t=i)
@@ -30,16 +28,18 @@ for i in np.linspace(0.0, 2.5, dtype=float, num=10):
     py.append(py1)
     ag1 = pl.Ang(Vx=vx1, Vy=vy1)
     ag.append(ag1)
-    
-    print("{time:7.3f} {px:7.3f} {py:7.3f} {vx:7.3f} {vy:7.3f} {vt:7.3f} {angle:7.3f}".format(
-            time = i,
-            px = px1,
-            py = py1,
-            vx = vx1,
-            vy = vy1,
-            vt = vt1,
-            angle = np.degrees(ag1)
-    ))
+
+data = {"Vx" : vx, 
+        "Vy" : vy, 
+        "Vt" : vt, 
+        "Px" : px, 
+        "Py" : py, 
+        "Ag" : ag
+        }
+
+df = pd.DataFrame(data)
+
+print(df)
 
 fig1, plot1 = plt.subplots()
 

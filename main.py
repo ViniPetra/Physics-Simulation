@@ -5,7 +5,7 @@ import PhysicsLib as pl
 
 #Definições de angulo e velocidade inciais
 ang = 20
-v  = 13
+v  = 50
 
 vx = []
 vy = []
@@ -14,7 +14,7 @@ px = []
 py = []
 ag = []
 
-for i in np.linspace(0.0, 1, dtype=float, num=10):
+for i in np.linspace(0.0, 10, dtype=float, num=100):
     vx1 = pl.Vx(ang=ang,v=v)
     vx.append(vx1)
     vy1 = pl.Vy(ang=ang,v=v,t=i)
@@ -29,6 +29,9 @@ for i in np.linspace(0.0, 1, dtype=float, num=10):
     ag1 = pl.Ang(Vx=vx1, Vy=vy1)
     ag.append(ag1)
 
+    if(py1<0):
+        break
+    
 data = {"Vx" : vx, 
         "Vy" : vy, 
         "Vt" : vt, 

@@ -8,10 +8,13 @@ def Vx(ang=0, v=0.0):
     return v * math.cos(a)
 
 #Quebra do componente Vx do vetor velocidade
-def Vy(ang=0, v=0.0, g=9.81, t=0.0):
+def Vy(ang=0, v=0.0, g=9.81, t=0.0, Var=True):
     a = math.radians(ang)
     v = v * math.sin(a)
-    return v - g*t
+    if Var:
+        return v - g*t
+    else:
+        return v
 
 #Cálculo da posição X em determinado tempo
 def Px(Xi=0.0, Vx=0.0, t=0.0):
@@ -53,7 +56,7 @@ for i in np.linspace(0.0, 2.5, dtype=float, num=10):
 
     px1 = Px(Vx=vx1,t=i)
     px.append(px1)
-    py1 = Py(Vy=Vy(ang=ang,v=v,t=i, var=False),t=i)
+    py1 = Py(Vy=Vy(ang=ang,v=v,t=i, Var=False),t=i)
     py.append(py1)
     ag1 = Ang(Vx=vx1, Vy=vy1)
     ag.append(ag1)
